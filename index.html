@@ -56,7 +56,11 @@
             directionalLight.target = target;
             scene.add(directionalLight);
 
-           gltfLoader.load('sand-castle.glb', function (gltf) {
+            // Get the base URL from the current page URL
+            const baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
+            const modelUrl = baseUrl + 'sand-castle.glb';
+
+           gltfLoader.load(modelUrl, function (gltf) {
                 castle = gltf.scene;
                 castle.scale.set(3, 3, 3);
                 castle.traverse(function (child) {
